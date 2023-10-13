@@ -54,6 +54,4 @@ public class PlayerTest {
     void testToString() {
         assertTrue( p1.toString().contains("Name: Bob  Goals: 2  Assists: 4  Clean sheet?: false"));
     }
-   // "Name: " + this.playerName + "Goals: " + this.goalsScored + "Assists: " + this.assistsMade
-        //        + "Clean sheet? : " + cleanSheet;
 }

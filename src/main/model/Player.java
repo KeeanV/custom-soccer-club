@@ -26,6 +26,8 @@ public class Player {
                                               + (this.assistsMade * POINTS_AWARDED_FOR_ASSIST);
         if (this.cleanSheet == true) {
             this.totalPoints += POINTS_AWARDED_FOR_CLEAN_SHEET;
+        } else {
+            return this.totalPoints;
         }
         return this.totalPoints;
     }
