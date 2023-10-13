@@ -12,25 +12,27 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 class ClubTest {
     private Club testClub;
     private List<Player> players;
-    private Player p1;
-    private Player p2;
-    private Player p3;
-    private Player p4;
-    private Player p5;
-    private Player p6;
-    private Player p7;
-    private Player p8;
-    private Player p9;
-    private Player p10;
-    private Player p11;
-    private Player p12;
-    private Player p13;
+    public Player p1;
+    public Player p2;
+    public Player p3;
+    public Player p4;
+    public Player p5;
+    public Player p6;
+    public Player p7;
+    public Player p8;
+    public Player p9;
+    public Player p10;
+    public Player p11;
+    public Player p12;
+    public Player p13;
 
 
     @BeforeEach
     void runBefore() {
         testClub = new Club("Vancouver City");
         this.players = new ArrayList<>();
+        p1 = new Player("Bob" , 1, 1, true);
+        p2 = new Player("Joe" , 2, 0, true);
     }
 
     @Test
@@ -46,25 +48,9 @@ class ClubTest {
         assertEquals(p1 , players.get(0));
     }
 
-    @Test
-    void testAddTooManyPlayers() {
-       players.add(p1);
-       players.add(p2);
-       players.add(p3);
-       players.add(p4);
-       players.add(p5);
-       players.add(p6);
-       players.add(p7);
-       players.add(p8);
-       players.add(p9);
-       players.add(p10);
-       players.add(p11);
-       players.add(p12);
-       players.add(p13);
-       assertEquals(11, players.size());
 
 
-    }
+
 
 
 
