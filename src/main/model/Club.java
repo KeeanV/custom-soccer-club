@@ -7,19 +7,21 @@ import java.util.List;
 public class Club {
     private String clubName;
     private List<Player> players;
+    private static final int CLUB_CAPACITY = 11;
 
     // REQUIRES: string with length > 0
     // EFFECTS: creates a club with a name and empty list of players.
     public Club(String clubName) {
         this.clubName = clubName;
-        this.players = new ArrayList<>(11);
+        this.players = new ArrayList<>(CLUB_CAPACITY);
     }
 
     // REQUIRES: player object
     // MODIFIES: this
-    // EFFECTS: adds a player object to the club's list of players, returns true if player was successfully added
+    // EFFECTS: adds a player object to the club's list of players, returns true if player was successfully added,
+    // returns false if 11 players are already in the club
     public boolean addPlayer(Player player) {
-        if (this.players.size() < 11) {
+        if (this.players.size() < CLUB_CAPACITY) {
             this.players.add(player);
             return true;
         } else {
