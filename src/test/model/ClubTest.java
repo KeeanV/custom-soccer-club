@@ -43,9 +43,18 @@ class ClubTest {
 
     @Test
     void testAddPlayer() {
-        players.add(p1);
-        assertEquals(1 , players.size());
-        assertEquals(p1 , players.get(0));
+        testClub.addPlayer(p1);
+        testClub.addPlayer(p2);
+        assertEquals(2,testClub.getPlayers().size() );
+    }
+
+    @Test
+    void testRemovePlayer() {
+        testClub.addPlayer(p1);
+        testClub.addPlayer(p2);
+        assertEquals(2,testClub.getPlayers().size() );
+        testClub.removePlayer(p1);
+        assertEquals(1, testClub.getPlayers().size());
     }
 
 
