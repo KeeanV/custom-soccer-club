@@ -49,9 +49,9 @@ public class Club {
 
     // REQUIRES: club object
     // EFFECTS: adds the individual points of each player in the club and returns the total points for the club
-    public int calculateTotalPoints(Club club) {
+    public int calculateTotalPoints() {
         int totalPoints = 0;
-        List<Player> players = club.getPlayers();
+        List<Player> players = this.getPlayers();
         for (Player player : players) {
             totalPoints += player.getTotalPoints();
         }
