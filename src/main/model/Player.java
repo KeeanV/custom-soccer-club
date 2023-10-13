@@ -74,7 +74,7 @@ public class Player {
     // EFFECTS: returns a string representation of a player and their statistics
     // based on toString() method in TellerApp from GitHub
     public String toString() {
-        return "Name: " + this.playerName + "Goals: " + this.goalsScored + "Assists: " + this.assistsMade
-                + "Clean sheet? : " + cleanSheet;
+        return "Name: " + this.playerName + "  Goals: " + this.goalsScored + "  Assists: " + this.assistsMade
+                + "  Clean sheet?: " + cleanSheet;
     }
 }
