@@ -1,11 +1,11 @@
 package ui;
 
+import model.Club;
 import model.Player;
 
 public class Main {
     public static void main(String[] args) {
-        Player p1 = new Player("Bob",2, 4, false);
-        System.out.println(p1.toString());
-
+        Club myClub = new Club("Vancouver City");
+        Player bob = new Player("Bob", 2, 3, true);
     }
 }

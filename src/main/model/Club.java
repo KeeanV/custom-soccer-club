@@ -5,8 +5,8 @@ import java.util.List;
 
 // represents a club containing a list of players, and having a name.
 public class Club {
-    private String clubName;
-    private List<Player> players;
+    private final String clubName;
+    private final List<Player> players;
     private static final int CLUB_CAPACITY = 11;
 
     // REQUIRES: string with length > 0

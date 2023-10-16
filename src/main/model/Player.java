@@ -2,7 +2,7 @@ package model;
 
 //Represents a player added to a club having a name, # of goals, assists, and clean sheets.
 public class Player {
-    private String playerName;
+    private final String playerName;
     private int goalsScored;
     private int assistsMade;
     private boolean cleanSheet;
@@ -24,7 +24,7 @@ public class Player {
     public int calculateTotalPoints() {
         this.totalPoints = (this.goalsScored * POINTS_AWARDED_FOR_GOAL)
                                               + (this.assistsMade * POINTS_AWARDED_FOR_ASSIST);
-        if (this.cleanSheet == true) {
+        if (this.cleanSheet) {
             this.totalPoints += POINTS_AWARDED_FOR_CLEAN_SHEET;
         } else {
             return this.totalPoints;
