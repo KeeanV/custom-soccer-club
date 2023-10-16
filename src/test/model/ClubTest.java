@@ -77,8 +77,17 @@ class ClubTest {
 
     @Test
     void testCalculateTotalPoints() {
-       testClub.calculateTotalPoints();
+       testClub.addPlayer(p1);
+       testClub.addPlayer(p2);
+       assertEquals(15, p1.calculateTotalPoints());
+       assertEquals(18, p2.calculateTotalPoints());
+       assertEquals(33,testClub.calculateTotalPoints());
+    }
 
+    @Test
+    void testCalculateTotalPointsZeroPlayers() {
+        assertEquals(0 ,testClub.calculateTotalPoints());
+        assertEquals(0,testClub.getPlayers().size());
     }
 
 
