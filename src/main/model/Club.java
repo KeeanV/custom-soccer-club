@@ -53,7 +53,7 @@ public class Club {
         int totalPoints = 0;
         List<Player> players = this.getPlayers();
         for (Player player : players) {
-            totalPoints += player.getTotalPoints();
+            totalPoints += player.calculateTotalPoints();
         }
         return totalPoints;
     }

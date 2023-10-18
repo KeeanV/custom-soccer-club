@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class ClubTest {
     private Club testClub;
@@ -24,7 +23,6 @@ class ClubTest {
     public Player p10;
     public Player p11;
     public Player p12;
-    public Player p13;
 
 
     @BeforeEach

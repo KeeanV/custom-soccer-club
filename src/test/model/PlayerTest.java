@@ -7,10 +7,10 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class PlayerTest {
     private Player p1;
-    private Player p2;
-    private Player p3;
-    private Player p4;
-    private Player p5;
+//    private Player p2;
+//    private Player p3;
+//    private Player p4;
+//    private Player p5;
 
     @BeforeEach
     void runBefore() {
@@ -22,7 +22,7 @@ public class PlayerTest {
         assertEquals("Bob" , p1.getPlayerName());
         assertEquals(2, p1.getGoalsScored());
         assertEquals(4, p1.getAssistsMade());
-        assertEquals(false, p1.getCleanSheet());
+        assertFalse(p1.getCleanSheet());
     }
 
     @Test
