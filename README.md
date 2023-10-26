@@ -28,8 +28,12 @@ the applications of statistical analysis to soccer**
 
 
 ## User Stories:
-- I want to add a player to a list of players within each team.
-- I want to view the list players within a team.
+- I want to add a player to a list of players within each club.
+- I want to view the list players within a club.
 - I want to add statistics (goals, assists, clean sheets) to a player.
 - I want to calculate the points total for each player, then calculate a total score for the user.
 - I want to view a player's statistics
+- I want to be able to have the option to save the list of players
+- in my club when exiting the application.
+- I want to be able to load the list of players in my club if I 
+- chose to save them.
