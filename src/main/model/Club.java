@@ -1,10 +1,13 @@
 package model;
 
+import org.json.JSONObject;
+import persistence.Writable;
+
 import java.util.ArrayList;
 import java.util.List;
 
 // represents a club containing a list of players, and having a name.
-public class Club {
+public class Club implements Writable {
     private final String clubName;
     private final List<Player> players;
     private static final int CLUB_CAPACITY = 11;
@@ -63,9 +66,10 @@ public class Club {
     }
 
 
-
-
-
-
-
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+       // json.put("name", playerName);
+        return json;
+    }
 }

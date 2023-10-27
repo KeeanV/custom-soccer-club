@@ -1,7 +1,12 @@
 package model;
 
+import org.json.JSONObject;
+import persistence.Writable;
+
+import java.lang.reflect.WildcardType;
+
 //Represents a player added to a club having a name, # of goals, assists, and clean sheets.
-public class Player {
+public class Player implements Writable {
     private final String playerName;
     private int goalsScored;
     private int assistsMade;
@@ -78,5 +83,12 @@ public class Player {
     public String toString() {
         return "Name: " + this.playerName + "  Goals: " + this.goalsScored + "  Assists: " + this.assistsMade
                 + "  Clean sheet?: " + cleanSheet;
+    }
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("name", playerName);
+        return json;
     }
 }
