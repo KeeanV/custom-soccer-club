@@ -1,0 +1,7 @@
+{
+  "players": [
+    {"name": "bob"},
+    {"name": "joe"}
+  ],
+  "name": "My club"
+}

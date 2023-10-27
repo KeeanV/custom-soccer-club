@@ -3,7 +3,7 @@ package model;
 import org.json.JSONObject;
 import persistence.Writable;
 
-import java.lang.reflect.WildcardType;
+//import java.lang.reflect.WildcardType;
 
 //Represents a player added to a club having a name, # of goals, assists, and clean sheets.
 public class Player implements Writable {

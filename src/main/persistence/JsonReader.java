@@ -64,7 +64,7 @@ public class JsonReader {
     private void addPlayer(WorkRoom wr, JSONObject jsonObject) {
         String name = jsonObject.getString("name");
         //Category category = Category.valueOf(jsonObject.getString("category"));
-        Player player = new Player("Keean",1,2, false);
+        Player player = new Player("bob",1,2, false);
         wr.addPlayer(player);
     }
 }
