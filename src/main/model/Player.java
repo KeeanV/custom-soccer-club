@@ -74,10 +74,6 @@ public class Player implements Writable {
         return this.cleanSheet;
     }
 
-    public int getTotalPoints() {
-        return this.totalPoints;
-    }
-
     // EFFECTS: returns a string representation of a player and their statistics
     // based on toString() method in TellerApp from GitHub
     public String toString() {
@@ -85,6 +81,7 @@ public class Player implements Writable {
                 + "  Clean sheet?: " + cleanSheet;
     }
 
+    // creates a player as a Json object
     @Override
     public JSONObject toJson() {
         JSONObject json = new JSONObject();

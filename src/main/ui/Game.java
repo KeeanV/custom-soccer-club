@@ -2,16 +2,29 @@ package ui;
 
 import model.Club;
 import model.Player;
+import model.WorkRoom;
+import persistence.JsonReader;
+import persistence.JsonWriter;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Scanner;
 
+// Represents the Fantasy Soccer game
 public class Game {
+    private static final String JSON_STORE = "./data/workroom.json";
     private Club club1;
-    private Club club2;
+    private WorkRoom workRoom;
     private Scanner input;
+    private JsonWriter jsonWriter;
+    private JsonReader jsonReader;
 
     // EFFECTS: runs the Fantasy Soccer game
     public Game() {
+        input = new Scanner(System.in);
+        workRoom = new WorkRoom("Keean's workroom");
+        jsonWriter = new JsonWriter(JSON_STORE);
+        jsonReader = new JsonReader(JSON_STORE);
         runGame();
     }
 
@@ -28,7 +41,7 @@ public class Game {
             command = input.nextLine();
             command = command.toLowerCase();
 
-            if (command.equals("6")) {
+            if (command.equals("8")) {
                 keepGoing = false;
             } else {
                 processCommand(command);
@@ -51,6 +64,10 @@ public class Game {
             doCalculateTotalPoints();
         } else if (command.equals("5")) {
             doCalculatePlayerTotal();
+        } else if (command.equals("6")) {
+            doSaveWorkRoom();
+        } else if (command.equals("7")) {
+            doLoadWorkRoom();
         } else {
             System.out.println("Selection not valid...");
         }
@@ -60,7 +77,6 @@ public class Game {
     // EFFECTS: initializes clubs
     private void init() {
         club1 = new Club("Vancouver City");
-        club2 = new Club("Vancouver United");
         input = new Scanner(System.in);
         input.useDelimiter("\n");
     }
@@ -73,7 +89,9 @@ public class Game {
         System.out.println("\t3 -> View the players in your club");
         System.out.println("\t4 -> Calculate your club's total points");
         System.out.println("\t5 -> View a player's statistics");
-        System.out.println("\t6 -> Quit");
+        System.out.println("\t6 -> Save players to your club");
+        System.out.println("\t7 -> Load players from your club");
+        System.out.println("\t8 -> Quit");
     }
 
     // MODIFIES: this
@@ -92,8 +110,7 @@ public class Game {
 
     //EFFECTS: returns a random boolean value for a clean sheet
     private boolean getRandomBoolean() {
-        double random = Math.random();
-        if (random > 0.5) {
+        if (Math.random() > 0.5) {
             return true;
         } else {
             return false;
@@ -106,15 +123,11 @@ public class Game {
         System.out.print("Enter player name to remove: ");
         String remove = input.nextLine();
 
-        if (remove.length() < 0) {
-            System.out.println("Please input a player name\n");
-        } else if (!club1.getPlayers().contains(remove)) {
-            System.out.println("Player is not in your club\n");
-        } else {
-            for (Player player : club1.getPlayers()) {
-                if (player.getPlayerName().equals(remove)) {
-                    club1.removePlayer(player);
-                }
+        for (Player player : club1.getPlayers()) {
+            if (player.getPlayerName().equals(remove)) {
+                club1.removePlayer(player);
+            } else {
+                System.out.println("Player is not in your club\n");
             }
         }
     }
@@ -124,7 +137,7 @@ public class Game {
         if (club1.getPlayers().size() > 0) {
             System.out.println(club1.getPlayers());
         } else {
-            System.out.println("There are no player in your club");
+            System.out.println("There are no players in your club");
         }
     }
 
@@ -151,5 +164,28 @@ public class Game {
         }
         message = "Total points for " + name + ": " + playerTotalPoints;
         System.out.println(message);
+    }
+
+    // EFFECTS: saves the workroom to file
+    private void doSaveWorkRoom() {
+        try {
+            jsonWriter.open();
+            jsonWriter.write(workRoom);
+            jsonWriter.close();
+            System.out.println("Saved " + workRoom.getName() + " to " + JSON_STORE);
+        } catch (FileNotFoundException e) {
+            System.out.println("Unable to write to file: " + JSON_STORE);
+        }
+    }
+
+    // MODIFIES: this
+    // EFFECTS: loads workroom from file
+    private void doLoadWorkRoom() {
+        try {
+            workRoom = jsonReader.read();
+            System.out.println("Loaded " + workRoom.getName() + " from " + JSON_STORE);
+        } catch (IOException e) {
+            System.out.println("Unable to read from file: " + JSON_STORE);
+        }
     }
 }

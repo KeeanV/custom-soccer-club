@@ -65,7 +65,7 @@ public class Club implements Writable {
         return this.clubName;
     }
 
-
+    // EFFECTS: creates a club as a Json object
     @Override
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
