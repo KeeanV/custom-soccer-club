@@ -86,6 +86,9 @@ public class Player implements Writable {
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
         json.put("name", playerName);
+        json.put("goalsScored", goalsScored);
+        json.put("assistsMade", assistsMade);
+        json.put("cleanSheet", cleanSheet);
         return json;
     }
 }

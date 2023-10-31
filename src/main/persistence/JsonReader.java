@@ -24,7 +24,7 @@ public class JsonReader {
 
     // EFFECTS: reads workroom from file and returns it;
     // throws IOException if an error occurs reading data from file
-    public WorkRoom read() throws IOException {
+    public Club read() throws IOException {
         String jsonData = readFile(source);
         JSONObject jsonObject = new JSONObject(jsonData);
         return parseWorkRoom(jsonObject);
@@ -42,16 +42,16 @@ public class JsonReader {
     }
 
     // EFFECTS: parses workroom from JSON object and returns it
-    private WorkRoom parseWorkRoom(JSONObject jsonObject) {
+    private Club parseWorkRoom(JSONObject jsonObject) {
         String name = jsonObject.getString("name");
-        WorkRoom wr = new WorkRoom(name);
+        Club wr = new Club(name);
         addPlayers(wr, jsonObject);
         return wr;
     }
 
     // MODIFIES: wr
-    // EFFECTS: parses thingies from JSON object and adds them to workroom
-    private void addPlayers(WorkRoom wr, JSONObject jsonObject) {
+    // EFFECTS: parses players from JSON object and adds them to workroom
+    private void addPlayers(Club wr, JSONObject jsonObject) {
         JSONArray jsonArray = jsonObject.getJSONArray("players");
         for (Object json : jsonArray) {
             JSONObject nextPlayer = (JSONObject) json;
@@ -60,11 +60,13 @@ public class JsonReader {
     }
 
     // MODIFIES: wr
-    // EFFECTS: parses thingy from JSON object and adds it to workroom
-    private void addPlayer(WorkRoom wr, JSONObject jsonObject) {
+    // EFFECTS: parses player from JSON object and adds it to workroom
+    private void addPlayer(Club wr, JSONObject jsonObject) {
         String name = jsonObject.getString("name");
-        //Category category = Category.valueOf(jsonObject.getString("category"));
-        Player player = new Player("bob",1,2, false);
+        Integer goalsScored = jsonObject.getInt("goalsScored");
+        Integer assistsMade = jsonObject.getInt("assistsMade");
+        Boolean cleanSheet = jsonObject.getBoolean("cleanSheet");
+        Player player = new Player(name,goalsScored, assistsMade, cleanSheet);
         wr.addPlayer(player);
     }
 }

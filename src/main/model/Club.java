@@ -1,5 +1,6 @@
 package model;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 import persistence.Writable;
 
@@ -69,7 +70,19 @@ public class Club implements Writable {
     @Override
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
-       // json.put("name", playerName);
+        json.put("name", clubName);
+        json.put("players", playersToJson());
         return json;
+    }
+
+    // EFFECTS: returns players in this workroom as a JSON array
+    private JSONArray playersToJson() {
+        JSONArray jsonArray = new JSONArray();
+
+        for (Player player : players) {
+            jsonArray.put(player.toJson());
+        }
+
+        return jsonArray;
     }
 }

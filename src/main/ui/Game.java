@@ -135,7 +135,10 @@ public class Game {
     // EFFECTS: returns the list of players in the club
     private void doGetListOfPlayers() {
         if (club1.getPlayers().size() > 0) {
-            System.out.println(club1.getPlayers());
+            System.out.println("The following players are in your club: ");
+            for (Player player : club1.getPlayers()) {
+                System.out.println(player.getPlayerName());
+            }
         } else {
             System.out.println("There are no players in your club");
         }
@@ -170,7 +173,7 @@ public class Game {
     private void doSaveWorkRoom() {
         try {
             jsonWriter.open();
-            jsonWriter.write(workRoom);
+            jsonWriter.write(club1);
             jsonWriter.close();
             System.out.println("Saved " + workRoom.getName() + " to " + JSON_STORE);
         } catch (FileNotFoundException e) {
@@ -182,7 +185,7 @@ public class Game {
     // EFFECTS: loads workroom from file
     private void doLoadWorkRoom() {
         try {
-            workRoom = jsonReader.read();
+            club1 = jsonReader.read();
             System.out.println("Loaded " + workRoom.getName() + " from " + JSON_STORE);
         } catch (IOException e) {
             System.out.println("Unable to read from file: " + JSON_STORE);
