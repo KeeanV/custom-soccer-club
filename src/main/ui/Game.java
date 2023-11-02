@@ -126,6 +126,7 @@ public class Game {
         for (Player player : club1.getPlayers()) {
             if (player.getPlayerName().equals(remove)) {
                 club1.removePlayer(player);
+                System.out.println(player.getPlayerName() + " was removed from your club.");
             } else {
                 System.out.println("Player is not in your club\n");
             }

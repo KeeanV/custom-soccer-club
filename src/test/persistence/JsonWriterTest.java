@@ -1,5 +1,6 @@
 package persistence;
 
+import model.Club;
 import model.Player;
 import model.WorkRoom;
 import org.junit.jupiter.api.Test;
@@ -29,7 +30,7 @@ class JsonWriterTest extends JsonTest {
     @Test
     void testWriterEmptyWorkroom() {
         try {
-            WorkRoom wr = new WorkRoom("My club");
+            Club wr = new Club("My club");
             JsonWriter writer = new JsonWriter("./data/testWriterEmptyWorkroom.json");
             writer.open();
             writer.write(wr);
@@ -37,8 +38,8 @@ class JsonWriterTest extends JsonTest {
 
             JsonReader reader = new JsonReader("./data/testWriterEmptyWorkroom.json");
             wr = reader.read();
-            assertEquals("My club", wr.getName());
-            assertEquals(0, wr.numPlayers());
+            assertEquals("My club", wr.getClubName());
+            assertEquals(0, wr.getPlayers().size());
         } catch (IOException e) {
             fail("Exception should not have been thrown");
         }
@@ -47,7 +48,7 @@ class JsonWriterTest extends JsonTest {
     @Test
     void testWriterGeneralWorkroom() {
         try {
-            WorkRoom wr = new WorkRoom("My club");
+            Club wr = new Club("My club");
             wr.addPlayer(new Player("bob" , 2, 0, true));
             wr.addPlayer(new Player("joe", 0, 0, true));
             JsonWriter writer = new JsonWriter("./data/testWriterGeneralWorkroom.json");
@@ -57,7 +58,7 @@ class JsonWriterTest extends JsonTest {
 
             JsonReader reader = new JsonReader("./data/testWriterGeneralWorkroom.json");
             wr = reader.read();
-            assertEquals("My club", wr.getName());
+            assertEquals("My club", wr.getClubName());
             List<Player> players = wr.getPlayers();
             assertEquals(2, players.size());
             checkPlayer("bob", players.get(0));

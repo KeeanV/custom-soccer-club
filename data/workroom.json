@@ -1,4 +1,9 @@
 {
-    "players": [{"name": "joe"}],
+    "players": [{
+        "cleanSheet": false,
+        "name": "bob",
+        "assistsMade": 2,
+        "goalsScored": 2
+    }],
     "name": "Vancouver City"
 }

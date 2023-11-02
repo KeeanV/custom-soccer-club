@@ -63,10 +63,10 @@ public class JsonReader {
     // EFFECTS: parses player from JSON object and adds it to workroom
     private void addPlayer(Club wr, JSONObject jsonObject) {
         String name = jsonObject.getString("name");
-        Integer goalsScored = jsonObject.getInt("goalsScored");
-        Integer assistsMade = jsonObject.getInt("assistsMade");
-        Boolean cleanSheet = jsonObject.getBoolean("cleanSheet");
-        Player player = new Player(name,goalsScored, assistsMade, cleanSheet);
+        int goalsScored = jsonObject.getInt("goalsScored");
+        int assistsMade = jsonObject.getInt("assistsMade");
+        boolean cleanSheet = jsonObject.getBoolean("cleanSheet");
+        Player player = new Player(name, goalsScored, assistsMade, cleanSheet);
         wr.addPlayer(player);
     }
 }

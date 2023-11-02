@@ -1,7 +1,17 @@
 {
     "players": [
-        {"name": "bob"},
-        {"name": "joe"}
+        {
+            "cleanSheet": true,
+            "name": "bob",
+            "assistsMade": 0,
+            "goalsScored": 2
+        },
+        {
+            "cleanSheet": true,
+            "name": "joe",
+            "assistsMade": 0,
+            "goalsScored": 0
+        }
     ],
     "name": "My club"
 }

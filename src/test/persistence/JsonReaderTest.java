@@ -1,5 +1,6 @@
 package persistence;
 
+import model.Club;
 import model.Player;
 import model.WorkRoom;
 import org.junit.jupiter.api.Test;
@@ -15,7 +16,7 @@ class JsonReaderTest extends JsonTest {
     void testReaderNonExistentFile() {
         JsonReader reader = new JsonReader("./data/noSuchFile.json");
         try {
-            WorkRoom wr = reader.read();
+            Club wr = reader.read();
             fail("IOException expected");
         } catch (IOException e) {
             // pass
@@ -26,9 +27,9 @@ class JsonReaderTest extends JsonTest {
     void testReaderEmptyWorkRoom() {
         JsonReader reader = new JsonReader("./data/testReaderEmptyWorkRoom.json");
         try {
-            WorkRoom wr = reader.read();
-            assertEquals("My club", wr.getName());
-            assertEquals(0, wr.numPlayers());
+            Club wr = reader.read();
+            assertEquals("My club", wr.getClubName());
+            assertEquals(0, wr.getPlayers().size());
         } catch (IOException e) {
             fail("Couldn't read from file");
         }
@@ -38,12 +39,11 @@ class JsonReaderTest extends JsonTest {
     void testReaderGeneralWorkRoom() {
         JsonReader reader = new JsonReader("./data/testReaderGeneralWorkRoom.json");
         try {
-            WorkRoom wr = reader.read();
-            assertEquals("My club", wr.getName());
+            Club wr = reader.read();
+            assertEquals("My club", wr.getClubName());
             List<Player> players = wr.getPlayers();
             assertEquals(2, players.size());
             checkPlayer("bob",  players.get(0));
-           // checkPlayer("joe",  players.get(1));
         } catch (IOException e) {
             fail("Couldn't read from file");
         }
