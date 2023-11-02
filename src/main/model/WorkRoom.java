@@ -24,20 +24,9 @@ public class WorkRoom implements Writable {
         return name;
     }
 
-    // MODIFIES: this
-    // EFFECTS: adds player to this workroom
-    public void addPlayer(Player player) {
-        players.add(player);
-    }
-
     // EFFECTS: returns an unmodifiable list of players in this workroom
     public List<Player> getPlayers() {
         return Collections.unmodifiableList(players);
-    }
-
-    // EFFECTS: returns number of players in this workroom
-    public int numPlayers() {
-        return players.size();
     }
 
     // creates a Json object
@@ -45,19 +34,10 @@ public class WorkRoom implements Writable {
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
         json.put("name", name);
-        json.put("players", playersToJson());
+//        json.put("players", playersToJson());
         return json;
     }
 
-    // EFFECTS: returns players in this workroom as a JSON array
-    private JSONArray playersToJson() {
-        JSONArray jsonArray = new JSONArray();
 
-        for (Player player : players) {
-            jsonArray.put(player.toJson());
-        }
-
-        return jsonArray;
-    }
 }
 
