@@ -1,9 +1,4 @@
 {
-    "players": [{
-        "cleanSheet": false,
-        "name": "keean",
-        "assistsMade": 2,
-        "goalsScored": 2
-    }],
+    "players": [],
     "name": "Vancouver City"
 }

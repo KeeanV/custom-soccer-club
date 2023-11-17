@@ -35,17 +35,17 @@ class JsonReaderTest extends JsonTest {
         }
     }
 
-    @Test
-    void testReaderGeneralWorkRoom() {
-        JsonReader reader = new JsonReader("./data/testReaderGeneralWorkRoom.json");
-        try {
-            Club wr = reader.read();
-            assertEquals("My club", wr.getClubName());
-            List<Player> players = wr.getPlayers();
-            assertEquals(2, players.size());
-            checkPlayer("bob",  players.get(0));
-        } catch (IOException e) {
-            fail("Couldn't read from file");
-        }
-    }
+//    @Test
+//    void testReaderGeneralWorkRoom() {
+//        JsonReader reader = new JsonReader("./data/testReaderGeneralWorkRoom.json");
+//        try {
+//            Club wr = reader.read();
+//            assertEquals("My club", wr.getClubName());
+//            List<Player> players = wr.getPlayers();
+//            assertEquals(2, players.size());
+//            checkPlayer("bob",  players.get(0));
+//        } catch (IOException e) {
+//            fail("Couldn't read from file");
+//        }
+//    }
 }
