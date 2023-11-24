@@ -16,8 +16,10 @@ public class GUI extends JFrame implements ActionListener {
     JButton button3 = new JButton("Add players");
     JButton button4 = new JButton("View players");
 
+
     public GUI() {
         createGUI();
+        club1 = new Club("Vancouver City");
     }
 
     public void createGUI() {
@@ -46,7 +48,6 @@ public class GUI extends JFrame implements ActionListener {
         JButton button4 = new JButton("View players");
         panel1.add(button4);
         button4.setVisible(true);
-
         JPanel panel2 = new JPanel();
         panel2.setBackground(Color.white);
         panel2.setBounds(250, 0, 550, 800);
@@ -67,31 +68,72 @@ public class GUI extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if ((e.getSource()) == button1) {
-
-            //doGetListOfPlayers();
-
+            JFrame frame = new JFrame();
+            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            frame.setLayout(null);
+            frame.setSize(800, 800);
+            frame.setVisible(true);
+            JPanel panel1 = new JPanel();
+            panel1.setBackground(Color.cyan);
+            panel1.setBounds(0, 0, 800, 800);
+            frame.add(panel1);
+            JLabel label = new JLabel();
+            label.setText("Players in your club:");
+            panel1.add(label);
+            panel1.add(doGetListOfPlayers());
         }
         if ((e.getSource()) == button2) {
             //
         }
         if ((e.getSource()) == button3) {
-            //
+            JFrame frame = new JFrame();
+            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            frame.setLayout(null);
+            frame.setSize(800, 800);
+            frame.setVisible(true);
+            JPanel panel1 = new JPanel();
+            panel1.setBackground(Color.cyan);
+            panel1.setBounds(0, 0, 800, 800);
+            frame.add(panel1);
+            String response;
+            response = JOptionPane.showInputDialog("Enter player name: ");
+            JLabel label = new JLabel();
+            label.setText(response + "was added to your club");
+            panel1.add(label);
+            Player p1 = new Player(response, (int) (Math.random() * 3), (int) (Math.random() * 3), getRandomBoolean());
+            club1.addPlayer(p1);
+
         }
         if ((e.getSource()) == button4) {
             //
         }
     }
 
-    private static void doGetListOfPlayers() {
-        if (club1.getPlayers().size() > 0) {
-            System.out.println("The following players are in your club: ");
-            //notes: use a new jpanel for each button, use text fields which have a get() method.
+    private static JLabel doGetListOfPlayers() {
+        JLabel label = new JLabel();
+        String names = "";
+        for (Player player : club1.getPlayers()) {
+            names += player.getPlayerName();
+        }
+        label.setText(names);
+        return label;
+    }
 
-            for (Player player : club1.getPlayers()) {
-                System.out.println(player.getPlayerName());
-            }
+    private void doAddPlayer() {
+        String name = "";
+        if (name.length() > 0) {
+            Player p1 = new Player(name, (int) (Math.random() * 3), (int) (Math.random() * 3), getRandomBoolean());
+            club1.addPlayer(p1);
         } else {
-            System.out.println("There are no players in your club");
+            System.out.println("Please input a player name\n");
+        }
+    }
+
+    private boolean getRandomBoolean() {
+        if (Math.random() > 0.5) {
+            return true;
+        } else {
+            return false;
         }
     }
 }
