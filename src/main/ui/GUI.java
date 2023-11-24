@@ -2,19 +2,27 @@ package ui;
 
 import model.Club;
 import model.Player;
+import model.WorkRoom;
+import persistence.JsonReader;
+import persistence.JsonWriter;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.io.FileNotFoundException;
 import javax.swing.*;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 public class GUI extends JFrame implements ActionListener {
+    private static final String JSON_STORE = "./data/workroom.json";
+    private WorkRoom workRoom;
+    private JsonWriter jsonWriter;
+    private JsonReader jsonReader;
     private static Club club1;
     JButton button1 = new JButton("View the list of players in your club");
-    JButton button2 = new JButton("Save your club");
-    JButton button3 = new JButton("Add players");
-    JButton button4 = new JButton("View players");
+    JButton button2 = new JButton("Add a player to your club");
+    JButton button3 = new JButton("Save your club");
+    JButton button4 = new JButton("Load your club");
 
 
     public GUI() {
@@ -26,16 +34,14 @@ public class GUI extends JFrame implements ActionListener {
 
         JLabel label = new JLabel();
         label.setText("HELLO");
-        ImageIcon icon = new ImageIcon("ball.png");
+        ImageIcon icon = new ImageIcon("./data/image/ball.png");
         label.setIcon(icon);
         label.setVerticalAlignment(JLabel.TOP);
         label.setHorizontalAlignment(JLabel.CENTER);
-        //label.setBounds(100, 100, 75, 75);
 
         JPanel panel1 = new JPanel();
         panel1.setBackground(Color.cyan);
         panel1.setBounds(0, 0, 250, 800);
-        //panel1.setLayout(new BorderLayout());
         panel1.add(button1);
         button1.setVisible(true);
         button1.addActionListener(this);
@@ -45,15 +51,12 @@ public class GUI extends JFrame implements ActionListener {
         panel1.add(button3);
         button3.setVisible(true);
         button3.addActionListener(this);
-        JButton button4 = new JButton("View players");
         panel1.add(button4);
         button4.setVisible(true);
         JPanel panel2 = new JPanel();
         panel2.setBackground(Color.white);
         panel2.setBounds(250, 0, 550, 800);
         panel2.setLayout(new BorderLayout());
-
-
 
         JFrame frame = new JFrame();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -83,9 +86,6 @@ public class GUI extends JFrame implements ActionListener {
             panel1.add(doGetListOfPlayers());
         }
         if ((e.getSource()) == button2) {
-            //
-        }
-        if ((e.getSource()) == button3) {
             JFrame frame = new JFrame();
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             frame.setLayout(null);
@@ -104,6 +104,15 @@ public class GUI extends JFrame implements ActionListener {
             club1.addPlayer(p1);
 
         }
+        if ((e.getSource()) == button3) {
+            try {
+                jsonWriter.open();
+                jsonWriter.write(club1);
+                jsonWriter.close();
+            } catch (FileNotFoundException exception) {
+                //
+            }
+        }
         if ((e.getSource()) == button4) {
             //
         }
@@ -119,15 +128,6 @@ public class GUI extends JFrame implements ActionListener {
         return label;
     }
 
-    private void doAddPlayer() {
-        String name = "";
-        if (name.length() > 0) {
-            Player p1 = new Player(name, (int) (Math.random() * 3), (int) (Math.random() * 3), getRandomBoolean());
-            club1.addPlayer(p1);
-        } else {
-            System.out.println("Please input a player name\n");
-        }
-    }
 
     private boolean getRandomBoolean() {
         if (Math.random() > 0.5) {
