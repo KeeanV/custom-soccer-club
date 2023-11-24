@@ -20,14 +20,14 @@ public class WorkRoom implements Writable {
         players = new ArrayList<>();
     }
 
-    public String getName() {
-        return name;
-    }
+//    public String getName() {
+//        return name;
+//    }
 
     // EFFECTS: returns an unmodifiable list of players in this workroom
-    public List<Player> getPlayers() {
-        return Collections.unmodifiableList(players);
-    }
+//    public List<Player> getPlayers() {
+//        return Collections.unmodifiableList(players);
+//    }
 
     // creates a Json object
     @Override
