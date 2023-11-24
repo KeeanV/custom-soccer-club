@@ -1,4 +1,17 @@
 {
-    "players": [],
+    "players": [
+        {
+            "cleanSheet": false,
+            "name": "bob",
+            "assistsMade": 2,
+            "goalsScored": 2
+        },
+        {
+            "cleanSheet": false,
+            "name": "keean",
+            "assistsMade": 0,
+            "goalsScored": 1
+        }
+    ],
     "name": "Vancouver City"
 }
