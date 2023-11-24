@@ -13,6 +13,7 @@ import javax.swing.*;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+// Represents the graphical user interface
 public class GUI extends JFrame implements ActionListener {
     private static final String JSON_STORE = "./data/workroom.json";
     private WorkRoom workRoom;
@@ -24,14 +25,14 @@ public class GUI extends JFrame implements ActionListener {
     JButton button3 = new JButton("Save your club");
     JButton button4 = new JButton("Load your club");
 
-
+    // EFFECTS: creates the gui and a Club object when the app is run
     public GUI() {
         createGUI();
         club1 = new Club("Vancouver City");
     }
 
+    // EFFECTS: adds panels to JFrame and shows menu with buttons
     public void createGUI() {
-
         JLabel label = new JLabel();
         label.setText("HELLO");
         ImageIcon icon = new ImageIcon("./data/image/ball.png");
@@ -71,38 +72,10 @@ public class GUI extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if ((e.getSource()) == button1) {
-            JFrame frame = new JFrame();
-            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            frame.setLayout(null);
-            frame.setSize(800, 800);
-            frame.setVisible(true);
-            JPanel panel1 = new JPanel();
-            panel1.setBackground(Color.cyan);
-            panel1.setBounds(0, 0, 800, 800);
-            frame.add(panel1);
-            JLabel label = new JLabel();
-            label.setText("Players in your club:");
-            panel1.add(label);
-            panel1.add(doGetListOfPlayers());
+            button1();
         }
         if ((e.getSource()) == button2) {
-            JFrame frame = new JFrame();
-            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            frame.setLayout(null);
-            frame.setSize(800, 800);
-            frame.setVisible(true);
-            JPanel panel1 = new JPanel();
-            panel1.setBackground(Color.cyan);
-            panel1.setBounds(0, 0, 800, 800);
-            frame.add(panel1);
-            String response;
-            response = JOptionPane.showInputDialog("Enter player name: ");
-            JLabel label = new JLabel();
-            label.setText(response + "was added to your club");
-            panel1.add(label);
-            Player p1 = new Player(response, (int) (Math.random() * 3), (int) (Math.random() * 3), getRandomBoolean());
-            club1.addPlayer(p1);
-
+            button2();
         }
         if ((e.getSource()) == button3) {
             try {
@@ -118,18 +91,53 @@ public class GUI extends JFrame implements ActionListener {
         }
     }
 
+    public static void button1() {
+        JFrame frame = new JFrame();
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setLayout(null);
+        frame.setSize(800, 800);
+        frame.setVisible(true);
+        JPanel panel1 = new JPanel();
+        panel1.setBackground(Color.cyan);
+        panel1.setBounds(0, 0, 800, 800);
+        frame.add(panel1);
+        JLabel label = new JLabel();
+        label.setText("Players in your club:");
+        panel1.add(label);
+        panel1.add(doGetListOfPlayers());
+    }
+
+    public static void button2() {
+        JFrame frame = new JFrame();
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setLayout(null);
+        frame.setSize(800, 800);
+        frame.setVisible(true);
+        JPanel panel1 = new JPanel();
+        panel1.setBackground(Color.cyan);
+        panel1.setBounds(0, 0, 800, 800);
+        frame.add(panel1);
+        String response;
+        response = JOptionPane.showInputDialog("Enter player name: ");
+        JLabel label = new JLabel();
+        label.setText(response + "was added to your club");
+        panel1.add(label);
+        Player p1 = new Player(response, (int) (Math.random() * 3), (int) (Math.random() * 3), getRandomBoolean());
+        club1.addPlayer(p1);
+    }
+
     private static JLabel doGetListOfPlayers() {
         JLabel label = new JLabel();
         String names = "";
         for (Player player : club1.getPlayers()) {
-            names += player.getPlayerName();
+            names += player.getPlayerName() + "   ";
         }
         label.setText(names);
         return label;
     }
 
 
-    private boolean getRandomBoolean() {
+    private static boolean getRandomBoolean() {
         if (Math.random() > 0.5) {
             return true;
         } else {
