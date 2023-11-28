@@ -1,17 +1,4 @@
 {
-    "players": [
-        {
-            "cleanSheet": true,
-            "name": "sdf",
-            "assistsMade": 0,
-            "goalsScored": 1
-        },
-        {
-            "cleanSheet": false,
-            "name": "keean",
-            "assistsMade": 2,
-            "goalsScored": 1
-        }
-    ],
+    "players": [],
     "name": "Vancouver City"
 }

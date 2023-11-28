@@ -31,7 +31,7 @@ public class GUI extends JFrame implements ActionListener {
     JButton button5 = new JButton("Sort your players by total points");
 
     // EFFECTS: creates the gui and a Club object when the app is run
-    public GUI() {
+    public GUI() throws Exception {
         createGUI();
         club1 = new Club("Vancouver City");
         jsonReader = new JsonReader(JSON_STORE);
@@ -41,13 +41,8 @@ public class GUI extends JFrame implements ActionListener {
 
     // CITATION: GUI frame and panel setup based on code shown in: https://www.youtube.com/watch?v=dvzAuq-YDpM
     // EFFECTS: adds panels to JFrame and shows menu with buttons
-    public void createGUI() {
-        JLabel label = new JLabel();
-        label.setText("HELLO");
-        ImageIcon icon = new ImageIcon("./data/image/ball.png");
-        label.setIcon(icon);
-        label.setVerticalAlignment(JLabel.TOP);
-        label.setHorizontalAlignment(JLabel.CENTER);
+    public void createGUI() throws Exception {
+        JLabel label = makeLabelAndImage();
 
         JPanel panel1 = new JPanel();
         panel1.setBackground(Color.cyan);
@@ -71,6 +66,17 @@ public class GUI extends JFrame implements ActionListener {
         panel2.setLayout(new BorderLayout());
 
         createJFrame(label, panel1, panel2);
+    }
+
+    private static JLabel makeLabelAndImage() throws ClassNotFoundException, InstantiationException, IllegalAccessException, UnsupportedLookAndFeelException {
+        UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+        JLabel label = new JLabel();
+        label.setText("HELLO");
+        ImageIcon icon = new ImageIcon("./data/image/ball.png");
+        label.setIcon(icon);
+        label.setVerticalAlignment(JLabel.TOP);
+        label.setHorizontalAlignment(JLabel.CENTER);
+        return label;
     }
 
     // REQUIRES: a label and two panel objects
