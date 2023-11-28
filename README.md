@@ -44,4 +44,4 @@ the applications of statistical analysis to soccer**
 - You can generate the second required action related to the user story "adding multiple Xs to a Y" by clicking "View the list of players in your club".
 - You can locate my visual component by the soccer ball when your first open the GUI.
 - You can save the state of my application by clicking the "Save your club" button.
-- You can reload the state of my application by... not done :(
+- You can reload the state of my application by clicking the "Load your club" button.

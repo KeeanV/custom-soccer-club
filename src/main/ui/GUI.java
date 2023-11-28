@@ -28,6 +28,7 @@ public class GUI extends JFrame implements ActionListener {
     JButton button2 = new JButton("Add a player to your club");
     JButton button3 = new JButton("Save your club");
     JButton button4 = new JButton("Load your club");
+    JButton button5 = new JButton("Sort your players by total points");
 
     // EFFECTS: creates the gui and a Club object when the app is run
     public GUI() {
@@ -60,6 +61,7 @@ public class GUI extends JFrame implements ActionListener {
         button3.addActionListener(this);
         panel1.add(button4);
         button4.setVisible(true);
+        button4.addActionListener(this);
         JPanel panel2 = new JPanel();
         panel2.setBackground(Color.white);
         panel2.setBounds(250, 0, 550, 800);
