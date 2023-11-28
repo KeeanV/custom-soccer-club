@@ -62,6 +62,9 @@ public class GUI extends JFrame implements ActionListener {
         panel1.add(button4);
         button4.setVisible(true);
         button4.addActionListener(this);
+        panel1.add(button5);
+        button5.setVisible(true);
+        button5.addActionListener(this);
         JPanel panel2 = new JPanel();
         panel2.setBackground(Color.white);
         panel2.setBounds(250, 0, 550, 800);
@@ -117,6 +120,9 @@ public class GUI extends JFrame implements ActionListener {
                 //
             }
         }
+        if (e.getSource() == button5) {
+            button5();
+        }
     }
 
     // EFFECTS: creates a new JFrame that lists players in the club
@@ -154,6 +160,42 @@ public class GUI extends JFrame implements ActionListener {
         panel1.add(label);
         Player p1 = new Player(response, (int) (Math.random() * 3), (int) (Math.random() * 3), getRandomBoolean());
         club1.addPlayer(p1);
+    }
+
+    // EFFECTS: creates a new JFrame the displays a sorted list of players
+    public static void button5() {
+        JFrame frame = new JFrame();
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setLayout(null);
+        frame.setSize(800, 800);
+        frame.setVisible(true);
+        JPanel panel1 = new JPanel();
+        panel1.setBackground(Color.cyan);
+        panel1.setBounds(0, 0, 800, 800);
+        frame.add(panel1);
+        JLabel label = new JLabel();
+        label.setText("Players sorted by points highest to lowest: ");
+        panel1.add(label);
+        panel1.add(doSortListOfPlayers());
+    }
+
+    // EFFECTS: sorts the list of players by total points
+    private static JLabel doSortListOfPlayers() {
+        JLabel label = new JLabel();
+        String list = "";
+        for (int  i = 0; i < club1.getPlayers().size(); i++) {
+            int one = club1.getPlayers().get(i).calculateTotalPoints();
+            int two = club1.getPlayers().get(i + 1).calculateTotalPoints();
+            if (one > two) {
+                list += club1.getPlayers().get(i).getPlayerName();
+                list += club1.getPlayers().get(i + 1).getPlayerName();
+            } else {
+                list += club1.getPlayers().get(i + 1).getPlayerName();
+                list += club1.getPlayers().get(i).getPlayerName();
+            }
+        }
+        label.setText(list);
+        return label;
     }
 
     // EFFECTS: returns a string of the list of players currently added to the club
