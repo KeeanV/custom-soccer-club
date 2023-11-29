@@ -68,7 +68,7 @@ public class GUI extends JFrame implements ActionListener {
         createJFrame(label, panel1, panel2);
     }
 
-    private static JLabel makeLabelAndImage() throws ClassNotFoundException, InstantiationException, IllegalAccessException, UnsupportedLookAndFeelException {
+    private static JLabel makeLabelAndImage() throws Exception {
         UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         JLabel label = new JLabel();
         label.setText("HELLO");
@@ -119,15 +119,19 @@ public class GUI extends JFrame implements ActionListener {
             }
         }
         if ((e.getSource()) == button4) {
-            try {
-                club1 = jsonReader.read();
-                updatePlayers();
-            } catch (IOException exception) {
-                //
-            }
+            button4Clicked();
         }
         if (e.getSource() == button5) {
             button5();
+        }
+    }
+
+    private void button4Clicked() {
+        try {
+            club1 = jsonReader.read();
+            updatePlayers();
+        } catch (IOException exception) {
+            //
         }
     }
 
