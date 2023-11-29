@@ -17,7 +17,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 // Represents the graphical user interface
-public class GUI extends JFrame implements ActionListener {
+public class GUI extends JFrame implements ActionListener, WindowListener {
     private static final String JSON_STORE = "./data/workroom.json";
     private WorkRoom workRoom;
     private JsonWriter jsonWriter;
@@ -66,6 +66,7 @@ public class GUI extends JFrame implements ActionListener {
         panel2.setLayout(new BorderLayout());
 
         createJFrame(label, panel1, panel2);
+
     }
 
     private static JLabel makeLabelAndImage() throws Exception {
@@ -81,7 +82,7 @@ public class GUI extends JFrame implements ActionListener {
 
     // REQUIRES: a label and two panel objects
     // EFFECTS: creates a JFrame and adds labels and panels
-    private static void createJFrame(JLabel label, JPanel panel1, JPanel panel2) {
+    private void createJFrame(JLabel label, JPanel panel1, JPanel panel2) {
         JFrame frame = new JFrame();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLayout(null);
@@ -90,6 +91,7 @@ public class GUI extends JFrame implements ActionListener {
         panel2.add(label);
         frame.add(panel1);
         frame.add(panel2);
+        frame.addWindowListener(this);
     }
 
     // REQUIRES: panel and button objects
@@ -234,5 +236,40 @@ public class GUI extends JFrame implements ActionListener {
         } else {
             return false;
         }
+    }
+
+    @Override
+    public void windowOpened(WindowEvent e) {
+
+    }
+
+    @Override
+    public void windowClosing(WindowEvent e) {
+
+    }
+
+    @Override
+    public void windowClosed(WindowEvent e) {
+        System.out.println("Window closed");
+    }
+
+    @Override
+    public void windowIconified(WindowEvent e) {
+
+    }
+
+    @Override
+    public void windowDeiconified(WindowEvent e) {
+
+    }
+
+    @Override
+    public void windowActivated(WindowEvent e) {
+
+    }
+
+    @Override
+    public void windowDeactivated(WindowEvent e) {
+
     }
 }
