@@ -27,7 +27,7 @@ public class Club implements Writable {
     public boolean addPlayer(Player player) {
         if (this.players.size() < CLUB_CAPACITY) {
             this.players.add(player);
-            EventLog.getInstance().logEvent(new Event(player.getPlayerName() + "added to club."));
+            EventLog.getInstance().logEvent(new Event(player.getPlayerName() + " added to club."));
             return true;
 
         } else {
@@ -40,7 +40,7 @@ public class Club implements Writable {
     // EFFECTS: removes a player object from the club's list of players, returns true if player was successfully removed
     public boolean removePlayer(Player player) {
         this.players.remove(player);
-        EventLog.getInstance().logEvent(new Event(player + "removed from club"));
+        EventLog.getInstance().logEvent(new Event(player + " removed from club"));
         return true;
     }
 

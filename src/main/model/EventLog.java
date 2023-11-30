@@ -56,4 +56,13 @@ public class EventLog implements Iterable<Event> {
     public Iterator<Event> iterator() {
         return events.iterator();
     }
+
+    @Override
+    public String toString() {
+        String message = "";
+        for (Event e: events) {
+            message += e.toString();
+        }
+        return message;
+    }
 }

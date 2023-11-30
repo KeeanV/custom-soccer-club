@@ -1,6 +1,7 @@
 package ui;
 
 import model.Club;
+import model.EventLog;
 import model.Player;
 import model.WorkRoom;
 import persistence.JsonReader;
@@ -245,12 +246,11 @@ public class GUI extends JFrame implements ActionListener, WindowListener {
 
     @Override
     public void windowClosing(WindowEvent e) {
-
+        System.out.println(EventLog.getInstance().toString());
     }
 
     @Override
     public void windowClosed(WindowEvent e) {
-        System.out.println("Window closed");
     }
 
     @Override
