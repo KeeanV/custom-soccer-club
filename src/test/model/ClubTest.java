@@ -59,16 +59,16 @@ class ClubTest {
     void testAddTooManyPlayers() {
         testClub.addPlayer(p1);
         testClub.addPlayer(p2);
-        testClub.addPlayer(p3);
-        testClub.addPlayer(p4);
-        testClub.addPlayer(p5);
-        testClub.addPlayer(p6);
-        testClub.addPlayer(p7);
-        testClub.addPlayer(p8);
-        testClub.addPlayer(p9);
-        testClub.addPlayer(p10);
-        testClub.addPlayer(p11);
-        testClub.addPlayer(p12);
+        testClub.addPlayer(p1);
+        testClub.addPlayer(p2);
+        testClub.addPlayer(p1);
+        testClub.addPlayer(p2);
+        testClub.addPlayer(p1);
+        testClub.addPlayer(p2);
+        testClub.addPlayer(p1);
+        testClub.addPlayer(p2);
+        testClub.addPlayer(p1);
+        testClub.addPlayer(p2);
         assertEquals(11, testClub.getPlayers().size());
 
     }

@@ -38,10 +38,18 @@ the applications of statistical analysis to soccer**
 - I want to be able to load the list of players in my club if I 
 - chose to save them.
 
-# Instructions for Grader
+## Instructions for Grader:
 
 - You can generate the first required action related to the user story "adding multiple Xs to a Y" by clicking the button "Add players to your club", and entering a name for that player.
 - You can generate the second required action related to the user story "adding multiple Xs to a Y" by clicking "View the list of players in your club".
 - You can locate my visual component by the soccer ball when your first open the GUI.
 - You can save the state of my application by clicking the "Save your club" button.
 - You can reload the state of my application by clicking the "Load your club" button.
+
+## Phase 4: Task 2:
+
+### Sample Event Log:
+    player name 1 was added to club.Wed Nov 29 23:19:49 PST 2023
+    player name 2 was added to club.Wed Nov 29 23:19:55 PST 2023
+    player name 3 was added to club.Wed Nov 29 23:20:00 PST 2023
+    List of players in club was accessed
