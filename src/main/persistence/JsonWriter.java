@@ -1,7 +1,6 @@
 package persistence;
 
 import model.Club;
-import model.WorkRoom;
 import org.json.JSONObject;
 
 

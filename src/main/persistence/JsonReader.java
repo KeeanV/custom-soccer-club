@@ -2,7 +2,7 @@ package persistence;
 
 import model.Club;
 import model.Player;
-import model.WorkRoom;
+//import model.WorkRoom;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;

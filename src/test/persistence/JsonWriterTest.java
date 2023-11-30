@@ -2,7 +2,6 @@ package persistence;
 
 import model.Club;
 import model.Player;
-import model.WorkRoom;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
@@ -18,7 +17,7 @@ class JsonWriterTest extends JsonTest {
     @Test
     void testWriterInvalidFile() {
         try {
-            WorkRoom wr = new WorkRoom("My club");
+          //  WorkRoom wr = new WorkRoom("My club");
             JsonWriter writer = new JsonWriter("./data/my\0illegal:fileName.json");
             writer.open();
             fail("IOException was expected");
@@ -62,7 +61,6 @@ class JsonWriterTest extends JsonTest {
             List<Player> players = wr.getPlayers();
             assertEquals(2, players.size());
             checkPlayer("bob", players.get(0));
-          //  checkPlayer("joe", players.get(1));
 
         } catch (IOException e) {
             fail("Exception should not have been thrown");

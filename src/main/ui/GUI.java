@@ -3,7 +3,7 @@ package ui;
 import model.Club;
 import model.EventLog;
 import model.Player;
-import model.WorkRoom;
+//import model.WorkRoom;
 import persistence.JsonReader;
 import persistence.JsonWriter;
 import java.util.List;
@@ -20,7 +20,7 @@ import javax.swing.JPanel;
 // Represents the graphical user interface
 public class GUI extends JFrame implements ActionListener, WindowListener {
     private static final String JSON_STORE = "./data/workroom.json";
-    private WorkRoom workRoom;
+    //private WorkRoom workRoom;
     private JsonWriter jsonWriter;
     private JsonReader jsonReader;
     private static Club club1;
@@ -247,6 +247,7 @@ public class GUI extends JFrame implements ActionListener, WindowListener {
     @Override
     public void windowClosing(WindowEvent e) {
         System.out.println(EventLog.getInstance().toString());
+        System.out.println("Application closed");
     }
 
     @Override

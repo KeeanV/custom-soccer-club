@@ -53,3 +53,4 @@ the applications of statistical analysis to soccer**
     player name 2 was added to club.Wed Nov 29 23:19:55 PST 2023
     player name 3 was added to club.Wed Nov 29 23:20:00 PST 2023
     List of players in club was accessed
+    Application closed
