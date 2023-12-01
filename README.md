@@ -54,3 +54,12 @@ the applications of statistical analysis to soccer**
     player name 3 was added to club.Wed Nov 29 23:20:00 PST 2023
     List of players in club was accessed
     Application closed
+
+## Phase 4: Task 3:
+I would refactor my project by working with the singleton design pattern.
+While working through my project I did not take into consideration
+the use of static fields and how they apply to accessing an object's
+information. I would have the Club class as the private static instance
+and have its list of players as the information that could be accessed 
+through a getInstance() method. I believe this would simplify the current messy
+design I have in my project.
