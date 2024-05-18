@@ -6,6 +6,8 @@ import model.Player;
 //import model.WorkRoom;
 import persistence.JsonReader;
 import persistence.JsonWriter;
+
+import java.util.Collections;
 import java.util.List;
 
 import java.awt.*;
@@ -20,7 +22,6 @@ import javax.swing.JPanel;
 // Represents the graphical user interface
 public class GUI extends JFrame implements ActionListener, WindowListener {
     private static final String JSON_STORE = "./data/workroom.json";
-    //private WorkRoom workRoom;
     private JsonWriter jsonWriter;
     private JsonReader jsonReader;
     private static Club club1;
@@ -42,8 +43,9 @@ public class GUI extends JFrame implements ActionListener, WindowListener {
 
     // CITATION: GUI frame and panel setup based on code shown in: https://www.youtube.com/watch?v=dvzAuq-YDpM
     // EFFECTS: adds panels to JFrame and shows menu with buttons
+    @SuppressWarnings({"checkstyle:MethodLength", "checkstyle:SuppressWarnings"})
     public void createGUI() throws Exception {
-        JLabel label = makeLabelAndImage();
+        JLabel label = makeLabel();
 
         JPanel panel1 = new JPanel();
         panel1.setBackground(Color.cyan);
@@ -65,19 +67,26 @@ public class GUI extends JFrame implements ActionListener, WindowListener {
         panel2.setBackground(Color.white);
         panel2.setBounds(250, 0, 550, 800);
         panel2.setLayout(new BorderLayout());
-
         createJFrame(label, panel1, panel2);
-
+        panel2.add(makeImage());
     }
 
-    private static JLabel makeLabelAndImage() throws Exception {
+    private static JLabel makeImage()  {
+        ImageIcon icon = new ImageIcon("./data/image/ball.png");
+        JLabel label2 = new JLabel();
+        label2.setIcon(icon);
+        label2.setVerticalAlignment(JLabel.CENTER);
+        label2.setHorizontalAlignment(JLabel.CENTER);
+        return label2;
+    }
+
+    private static JLabel makeLabel() throws Exception {
         UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         JLabel label = new JLabel();
-        label.setText("HELLO");
-        ImageIcon icon = new ImageIcon("./data/image/ball.png");
-        label.setIcon(icon);
+        label.setText("Welcome To Your Club Management System");
         label.setVerticalAlignment(JLabel.TOP);
         label.setHorizontalAlignment(JLabel.CENTER);
+        label.setSize(500,500);
         return label;
     }
 
@@ -169,9 +178,9 @@ public class GUI extends JFrame implements ActionListener, WindowListener {
         String response;
         response = JOptionPane.showInputDialog("Enter player name: ");
         JLabel label = new JLabel();
-        label.setText(response + "was added to your club");
+        label.setText(response + " was added to your club");
         panel1.add(label);
-        Player p1 = new Player(response, (int) (Math.random() * 3), (int) (Math.random() * 3), getRandomBoolean());
+        Player p1 = new Player(response, (int) (Math.random() * 3), (int) (Math.random() * 3), (Math.random() > 0.5));
         club1.addPlayer(p1);
     }
 
@@ -196,16 +205,10 @@ public class GUI extends JFrame implements ActionListener, WindowListener {
     private static JLabel doSortListOfPlayers() {
         JLabel label = new JLabel();
         String list = "";
-        for (int  i = 0; i < club1.getPlayers().size(); i++) {
-            int one = club1.getPlayers().get(i).calculateTotalPoints();
-            int two = club1.getPlayers().get(i + 1).calculateTotalPoints();
-            if (one > two) {
-                list += club1.getPlayers().get(i).getPlayerName();
-                list += club1.getPlayers().get(i + 1).getPlayerName();
-            } else {
-                list += club1.getPlayers().get(i + 1).getPlayerName();
-                list += club1.getPlayers().get(i).getPlayerName();
-            }
+        List<Player> sortedPlayers = club1.getPlayers();
+        Collections.sort(sortedPlayers);
+        for (Player p : sortedPlayers) {
+            list += p.getPlayerName() + " (" + p.calculateTotalPoints() + ")    ";
         }
         label.setText(list);
         return label;
@@ -225,18 +228,7 @@ public class GUI extends JFrame implements ActionListener, WindowListener {
     // EFFECTS: loads the list of players that was saved in the club
     private void updatePlayers() {
         myList.clear();
-        for (Player p : club1.getPlayers()) {
-            myList.add(p);
-        }
-    }
-
-    //EFFECTS: helper method to return a random boolean value for a clean sheet
-    private static boolean getRandomBoolean() {
-        if (Math.random() > 0.5) {
-            return true;
-        } else {
-            return false;
-        }
+        myList.addAll(club1.getPlayers());
     }
 
     @Override

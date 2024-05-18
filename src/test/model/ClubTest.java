@@ -70,7 +70,6 @@ class ClubTest {
         testClub.addPlayer(p1);
         testClub.addPlayer(p2);
         assertEquals(11, testClub.getPlayers().size());
-
     }
 
     @Test

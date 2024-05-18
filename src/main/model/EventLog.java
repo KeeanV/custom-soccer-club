@@ -19,7 +19,7 @@ public class EventLog implements Iterable<Event> {
      */
     // EFFECTS: creates an eventLog with an empty list of events
     private EventLog() {
-        events = new ArrayList<Event>();
+        events = new ArrayList<>();
     }
 
     // EFFECTS: creates an instance of eventLog if the log does not exist yet and returns the eventLog

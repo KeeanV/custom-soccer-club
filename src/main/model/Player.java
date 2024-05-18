@@ -4,7 +4,7 @@ import org.json.JSONObject;
 import persistence.Writable;
 
 //Represents a player added to a club having a name, # of goals, assists, and clean sheets.
-public class Player implements Writable {
+public class Player implements Writable, Comparable<Player> {
     private final String playerName;
     private int goalsScored;
     private int assistsMade;
@@ -88,5 +88,9 @@ public class Player implements Writable {
         json.put("assistsMade", assistsMade);
         json.put("cleanSheet", cleanSheet);
         return json;
+    }
+
+    public int compareTo(Player other) {
+        return Integer.compare(other.calculateTotalPoints(), this.calculateTotalPoints());
     }
 }

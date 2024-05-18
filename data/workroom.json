@@ -1,17 +1,9 @@
 {
-    "players": [
-        {
-            "cleanSheet": false,
-            "name": "hhhh",
-            "assistsMade": 1,
-            "goalsScored": 0
-        },
-        {
-            "cleanSheet": false,
-            "name": "wwwww",
-            "assistsMade": 0,
-            "goalsScored": 1
-        }
-    ],
+    "players": [{
+        "cleanSheet": false,
+        "name": "messi",
+        "assistsMade": 2,
+        "goalsScored": 1
+    }],
     "name": "Vancouver City"
 }

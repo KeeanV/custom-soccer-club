@@ -22,35 +22,26 @@ public class Club implements Writable {
 
     // REQUIRES: player object
     // MODIFIES: this
-    // EFFECTS: adds a player object to the club's list of players, returns true if player was successfully added,
-    // returns false if 11 players are already in the club
-    public boolean addPlayer(Player player) {
+    // EFFECTS: adds a player object to the club's list of players if there are less than 11 players in the club
+    public void addPlayer(Player player) {
         if (this.players.size() < CLUB_CAPACITY) {
             this.players.add(player);
             EventLog.getInstance().logEvent(new Event(player.getPlayerName() + " was added to club."));
-            return true;
-
-        } else {
-            return false;
         }
     }
 
     // REQUIRES: player object
     // MODIFIES: this
-    // EFFECTS: removes a player object from the club's list of players, returns true if player was successfully removed
-    public boolean removePlayer(Player player) {
+    // EFFECTS: removes a player object from the club's list of players
+    public void removePlayer(Player player) {
         this.players.remove(player);
         EventLog.getInstance().logEvent(new Event(player + " was removed from club"));
-        return true;
     }
 
     // REQUIRES: club object
     // EFFECTS: returns a list of players added to the club
     public List<Player> getPlayers() {
-        List<Player> players = new ArrayList<>();
-        for (Player player : this.players) {
-            players.add(player);
-        }
+        List<Player> players = new ArrayList<>(this.players);
         EventLog.getInstance().logEvent(new Event("List of players in club was accessed"));
         return players;
     }
