@@ -82,12 +82,12 @@ public class Player implements Writable, Comparable<Player> {
     // creates a player as a Json object
     @Override
     public JSONObject toJson() {
-        JSONObject json = new JSONObject();
-        json.put("name", playerName);
-        json.put("goalsScored", goalsScored);
-        json.put("assistsMade", assistsMade);
-        json.put("cleanSheet", cleanSheet);
-        return json;
+        JSONObject playerAsJson = new JSONObject();
+        playerAsJson.put("name", playerName);
+        playerAsJson.put("goalsScored", goalsScored);
+        playerAsJson.put("assistsMade", assistsMade);
+        playerAsJson.put("cleanSheet", cleanSheet);
+        return playerAsJson;
     }
 
     public int compareTo(Player other) {
