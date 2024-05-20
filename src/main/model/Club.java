@@ -64,10 +64,10 @@ public class Club implements Writable {
     // EFFECTS: creates a club as a Json object
     @Override
     public JSONObject toJson() {
-        JSONObject json = new JSONObject();
-        json.put("name", clubName);
-        json.put("players", playersToJson());
-        return json;
+        JSONObject clubAsJson = new JSONObject();
+        clubAsJson.put("name", clubName);
+        clubAsJson.put("players", playersToJson());
+        return clubAsJson;
     }
 
     // EFFECTS: returns players in this workroom as a JSON array
