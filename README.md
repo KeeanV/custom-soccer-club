@@ -1,8 +1,10 @@
-# My Personal Project
-
-## Fantasy Soccer Application  
+# Fantasy Soccer Application  
 
 
+
+
+**I chose this project because I am interested in soccer, fantasy soccer, and
+the applications of statistical analysis to soccer**
 
 What will the application do?
 
@@ -20,10 +22,6 @@ Who will use it?
 whether on their own or if they are competing for the highest score
 with a group of people.**
 
-Why is this project of interest to you?
-
-**This project is of interest because I am interested in soccer, fantasy soccer, and
-the applications of statistical analysis to soccer**
 
 
 
@@ -38,15 +36,7 @@ the applications of statistical analysis to soccer**
 - I want to be able to load the list of players in my club if I 
 - chose to save them.
 
-## Instructions for Grader:
 
-- You can generate the first required action related to the user story "adding multiple Xs to a Y" by clicking the button "Add players to your club", and entering a name for that player.
-- You can generate the second required action related to the user story "adding multiple Xs to a Y" by clicking "View the list of players in your club".
-- You can locate my visual component by the soccer ball when your first open the GUI.
-- You can save the state of my application by clicking the "Save your club" button.
-- You can reload the state of my application by clicking the "Load your club" button.
-
-## Phase 4: Task 2:
 
 ### Sample Event Log:
     player name 1 was added to club.Wed Nov 29 23:19:49 PST 2023
@@ -54,12 +44,3 @@ the applications of statistical analysis to soccer**
     player name 3 was added to club.Wed Nov 29 23:20:00 PST 2023
     List of players in club was accessed
     Application closed
-
-## Phase 4: Task 3:
-I would refactor my project by working with the singleton design pattern.
-While working through my project I did not take into consideration
-the use of static fields and how they apply to accessing an object's
-information. I would have the Club class as the private static instance
-and have its list of players as the information that could be accessed 
-through a getInstance() method. I believe this would simplify the current messy
-design I have in my project.
